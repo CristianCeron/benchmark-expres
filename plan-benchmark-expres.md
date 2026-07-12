@@ -15,7 +15,7 @@
 - commit: "bootstrap: proyecto Next.js + TypeScript + Vitest + CSS de Nocturne"
 - Depende de: nada
 
-## Tarea 2: Tipo Benchmark y datos placeholder
+## Tarea 2: Tipo Benchmark y datos placeholder [HECHO]
 - Checkpoint: no
 - test (falla): test que carga `src/data/benchmarks.ts` y espera un arreglo de 4 elementos, cada uno con `categoria`, `titulo`, `jugadores` (mínimo 1), `fortalezas`, `brecha`, `oportunidad`, `advertencia` no vacíos; falla porque el arreglo está vacío.
 - implementa: definir la interfaz `Benchmark` en TypeScript (mismos campos que usa el mockup: `categoria`, `titulo`, `jugadores[]`, `fortalezas[]`, `brecha[]`, `oportunidad[]`, `advertencia`) y un arreglo `benchmarks` con 4 objetos placeholder.
