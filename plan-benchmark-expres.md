@@ -23,7 +23,7 @@
 - commit: "feat: tipo Benchmark y datos placeholder"
 - Depende de: Tarea 1
 
-## Tarea 3: Transcribir benchmark 1, explicador de rechazos KYC
+## Tarea 3: Transcribir benchmark 1, explicador de rechazos KYC [HECHO]
 - Checkpoint: no
 - test (falla): test específico que verifica que el objeto en el índice 0 no tiene ningún campo con el valor `"TODO"` y que `jugadores` incluye los nombres reales del mockup.
 - implementa: copiar el contenido ya escrito en el mockup (Truora, Onfido, Sumsub, Trulioo, iDenfy; fortalezas, brecha, oportunidad, advertencia) al objeto del índice 0, sin reinventar el texto.
