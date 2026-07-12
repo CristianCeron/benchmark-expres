@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+.env
+.env.local
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+
+# Material de referencia del handoff de diseño, no es parte de la app.
+# Incluye notas personales (uploads/Sobre mi/) que no deben subirse a GitHub.
+design-system/
+*.zip
