@@ -81,6 +81,14 @@ Las tareas originales 2 a 13 de este plan construyeron 4 benchmarks de ejemplo f
 - commit: "deploy: primera versión publicada en Vercel"
 - Depende de: Tarea 15, Tarea 16, Tarea 17, Tarea 22, Tarea 23, y validación manual explícita de Cristian en local
 
+## Tarea 24: Reintento automático con backoff ante fallas de Gemini [HECHO]
+- Checkpoint: no
+- test (falla): test que simula que Gemini falla una vez y responde bien la segunda, esperando status 200 y que se haya llamado 2 veces; y otro que simula 3 fallas seguidas, esperando 503 y 3 llamadas. Fallan porque la ruta no reintentaba (una sola llamada, error inmediato).
+- implementa: en `app/api/try-idea/route.ts`, hasta 3 intentos con espera creciente (1s, luego 2s) entre cada uno antes de rendirse. El error 503 al usuario solo aparece si los 3 intentos fallan. Justificación: el error de "alta demanda" de Gemini es capacidad compartida de Google, no cupo propio, y su propia documentación dice que los picos suelen ser temporales, así que reintentar en el momento resuelve la mayoría de los casos sin que el usuario vea nada. No se muestra un contador de tiempo de esperado exacto porque Google no expone esa información para este tipo de error, y hubiera sido inventar un dato.
+- tests pasan: 22 tests en verde, `tsc --noEmit` sin errores.
+- commit: "feat: reintentar automáticamente con backoff si Gemini falla por alta demanda"
+- Depende de: Tarea 22
+
 ## Verificación end-to-end
 - En local: `npm run dev`, abrir el cuadro "prueba tu idea", analizar la idea de ejemplo o una propia, confirmar que llega una respuesta real de Gemini con las 8 dimensiones en tarjetas expandibles, y que la advertencia se ve siempre.
 - En publicado: abrir la URL de Vercel, repetir la misma prueba, y confirmar que se ve bien en un celular.
