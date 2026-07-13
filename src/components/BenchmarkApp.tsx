@@ -54,8 +54,8 @@ export function BenchmarkApp() {
 
       {view === "tool" && (
         <div className={styles.toolWrap} style={{ position: "relative", maxWidth: 1160, width: "100%", margin: "0 auto", boxSizing: "border-box", display: "flex", flexDirection: "column", gap: 32 }}>
-          <div className={styles.hero}>
-            <div style={{ fontSize: 11, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--color-accent-300)", marginBottom: 10, display: "flex", alignItems: "center", gap: 8 }}>
+          <div className={styles.hero} style={{ textAlign: "center", maxWidth: 640, margin: "0 auto" }}>
+            <div style={{ fontSize: 11, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--color-accent-300)", marginBottom: 10, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
               <span style={{ width: 16, height: 1, background: "var(--color-accent-300)" }} />
               Antes de construir, benchmark
             </div>
