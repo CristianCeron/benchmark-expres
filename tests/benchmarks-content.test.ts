@@ -44,3 +44,21 @@ describe("contenido benchmark 2: verificación de contenido en la entrega", () =
     );
   });
 });
+
+describe("contenido benchmark 3: deuda de proceso sin integración de sistemas", () => {
+  it("no tiene campos placeholder", () => {
+    assertSinTodo(3);
+  });
+
+  it("incluye jugadores reales de process mining", () => {
+    expect(benchmarks[3].jugadores).toEqual(
+      expect.arrayContaining(["Celonis", "SAP Signavio"])
+    );
+  });
+});
+
+describe("los 4 benchmarks juntos", () => {
+  it("ninguno tiene campos placeholder", () => {
+    for (let i = 0; i < 4; i++) assertSinTodo(i);
+  });
+});

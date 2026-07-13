@@ -47,7 +47,7 @@
 - commit: "content: benchmark verificación de entrega transcrito del mockup"
 - Depende de: Tarea 4
 
-## Tarea 6: Transcribir benchmark 4 y revisión humana de los 4
+## Tarea 6: Transcribir benchmark 4 y revisión humana de los 4 [HECHO — esperando revisión]
 - Checkpoint: sí (el valor central del producto depende de que este contenido sea real; antes de seguir se confirma con Cristian que la transcripción es fiel al mockup y que ninguna afirmación quedó desactualizada)
 - test (falla): mismo test de forma, aplicado al índice 3, más un test que corre sobre los 4 elementos juntos.
 - implementa: copiar el contenido del mockup (Celonis, SAP Signavio, UiPath Process Mining, mindzie y el resto de campos) al índice 3.

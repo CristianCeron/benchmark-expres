@@ -70,12 +70,23 @@ export const benchmarks: Benchmark[] = [
       "La logística de última milla ya está consolidada. La oportunidad es un nicho angosto, la verificación de contenido, no la ruta completa.",
   },
   {
-    categoria: "TODO",
-    titulo: "TODO",
-    jugadores: ["TODO"],
-    fortalezas: ["TODO"],
-    brecha: ["TODO"],
-    oportunidad: ["TODO"],
-    advertencia: "TODO",
+    categoria: "Cross-sector · Operaciones",
+    titulo: "Detector de deuda de proceso sin integración de sistemas",
+    jugadores: ["Celonis", "SAP Signavio", "UiPath Process Mining", "mindzie"],
+    fortalezas: [
+      "Minería de procesos a partir de logs de sistemas ya integrados",
+      "Detección de cuellos de botella y benchmarks por industria",
+      "IA prescriptiva para priorizar automatización",
+    ],
+    brecha: [
+      "Todos dependen de logs limpios de un ERP/CRM ya integrado",
+      "La mayoría de negocios en transformación temprana opera en Excel y WhatsApp, sin ese registro",
+    ],
+    oportunidad: [
+      "Diagnóstico por entrevista y observación, sin depender de logs de sistema",
+      "Detecta deuda de proceso justo donde estas herramientas no llegan",
+    ],
+    advertencia:
+      "Celonis y SAP dominan la categoría de 'process mining'. La oportunidad vive fuera de su alcance técnico, no compite de frente.",
   },
 ];
