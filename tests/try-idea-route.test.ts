@@ -1,37 +1,32 @@
 import { describe, expect, it, vi } from "vitest";
 
-const mockCreate = vi.fn().mockResolvedValue({
-  content: [
-    {
-      type: "text",
-      text: JSON.stringify({
-        categoria: "Ejemplo · Categoría de prueba",
-        titulo: "Idea de prueba",
-        jugadores: ["Jugador A", "Jugador B"],
-        fortalezas: ["Hace algo bien"],
-        brecha: ["Falta algo"],
-        oportunidad: ["Oportunidad de diferenciación"],
-        advertencia: "Advertencia de ejemplo",
-        señalesTendencia: ["Señal de tendencia de ejemplo"],
-        ideasRedes: ["Idea de redes de ejemplo"],
-        queHacer: ["Hacer esto"],
-        queNoHacer: ["No hacer esto otro"],
-      }),
-    },
-  ],
+const mockGenerateContent = vi.fn().mockResolvedValue({
+  text: JSON.stringify({
+    categoria: "Ejemplo · Categoría de prueba",
+    titulo: "Idea de prueba",
+    jugadores: ["Jugador A", "Jugador B"],
+    fortalezas: ["Hace algo bien"],
+    brecha: ["Falta algo"],
+    oportunidad: ["Oportunidad de diferenciación"],
+    advertencia: "Advertencia de ejemplo",
+    señalesTendencia: ["Señal de tendencia de ejemplo"],
+    ideasRedes: ["Idea de redes de ejemplo"],
+    queHacer: ["Hacer esto"],
+    queNoHacer: ["No hacer esto otro"],
+  }),
 });
 
-vi.mock("@anthropic-ai/sdk", () => {
+vi.mock("@google/genai", () => {
   return {
-    default: vi.fn().mockImplementation(() => ({
-      messages: { create: mockCreate },
+    GoogleGenAI: vi.fn().mockImplementation(() => ({
+      models: { generateContent: mockGenerateContent },
     })),
   };
 });
 
 describe("POST /api/try-idea", () => {
   it("devuelve un benchmark con las 7 dimensiones para la idea recibida", async () => {
-    process.env.ANTHROPIC_API_KEY = "test-key";
+    process.env.GEMINI_API_KEY = "test-key";
     const { POST } = await import("../app/api/try-idea/route");
 
     const request = new Request("http://localhost/api/try-idea", {
@@ -42,7 +37,7 @@ describe("POST /api/try-idea", () => {
     const response = await POST(request);
     const data = await response.json();
 
-    expect(mockCreate).toHaveBeenCalled();
+    expect(mockGenerateContent).toHaveBeenCalled();
     expect(data.jugadores.length).toBeGreaterThan(0);
     expect(data.fortalezas.length).toBeGreaterThan(0);
     expect(data.brecha.length).toBeGreaterThan(0);

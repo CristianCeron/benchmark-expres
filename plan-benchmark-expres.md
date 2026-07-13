@@ -3,7 +3,7 @@
 ## Encabezado
 - Objetivo: página pública de una sola sesión que muestra 4 estudios de mercado de 7 dimensiones cada uno, con un cuadro de "prueba tu idea" funcional en local y estático en el demo publicado.
 - Arquitectura: Next.js (App Router) con TypeScript, contenido de los benchmarks como datos estáticos tipados, una sola ruta de API server-side para la llamada real a IA (solo se usa en local), despliegue estático en Vercel. El diseño visual reutiliza el sistema Nocturne ya construido por Cristian, no se inventa uno nuevo.
-- Stack: Next.js 14, TypeScript, CSS de Nocturne (sin Tailwind), Vitest + React Testing Library para tests, SDK de Anthropic para la llamada a IA en local.
+- Stack: Next.js 14, TypeScript, CSS de Nocturne (sin Tailwind), Vitest + React Testing Library para tests, SDK de Google Gemini para la llamada a IA en local.
 - Fuente de diseño y contenido: `design-system/dise-o-de-plataforma-final/project/Benchmark Expres - Plataforma.dc.html` (mockup con el contenido de los 4 benchmarks ya investigado y el sistema Nocturne en `_ds/nocturne-.../styles.css`).
 - Modelo de datos por benchmark, 7 dimensiones: competidores (`jugadores`), referentes principales (`fortalezas`), brecha (`brecha`), oportunidad de diferenciación (`oportunidad`), señales de tendencia (`señalesTendencia`, no es dato en vivo, es lectura razonada), ideas para mover redes (`ideasRedes`), y qué hacer/qué no hacer (`queHacer` / `queNoHacer`).
 - Spec: [spec-benchmark-expres.md](spec-benchmark-expres.md)
@@ -114,15 +114,15 @@
 
 ## Tarea 14: Función local para la llamada real a IA con las 7 dimensiones [HECHO — esperando prueba manual con key real]
 - Checkpoint: sí (usa la clave personal de Cristian y hace una llamada de red real con costo asociado)
-- test (falla): test de la ruta `app/api/try-idea/route.ts` que envía una idea de prueba y espera una respuesta con las 7 dimensiones en la estructura del tipo `Benchmark`; usa un mock del cliente de Anthropic (no llama a la API real en el test), falla porque la ruta no existe.
-- implementa: route handler server-side que lee `ANTHROPIC_API_KEY` de variable de entorno (nunca expuesta al cliente) y llama al modelo de Claude con la idea recibida, con un prompt que pide explícitamente las 7 dimensiones y que enmarca "señales de tendencia" como lectura razonada, nunca como dato de redes en tiempo real. En `TryIdeaBox`, cuando `NEXT_PUBLIC_DEMO_MODE === "live"`, el formulario se habilita y llama a esta ruta de verdad.
+- test (falla): test de la ruta `app/api/try-idea/route.ts` que envía una idea de prueba y espera una respuesta con las 7 dimensiones en la estructura del tipo `Benchmark`; usa un mock del cliente de Gemini (no llama a la API real en el test), falla porque la ruta no existe.
+- implementa: route handler server-side que lee `GEMINI_API_KEY` de variable de entorno (nunca expuesta al cliente) y llama al modelo de Gemini con la idea recibida, con un prompt que pide explícitamente las 7 dimensiones y que enmarca "señales de tendencia" como lectura razonada, nunca como dato de redes en tiempo real. En `TryIdeaBox`, cuando `NEXT_PUBLIC_DEMO_MODE === "live"`, el formulario se habilita y llama a esta ruta de verdad.
 - tests pasan: test con mock en verde. Verificación manual adicional (no automatizada): correr `npm run dev` en local con la key real en `.env.local`, probar con 2 o 3 ideas distintas y confirmar que las 7 dimensiones salen coherentes antes de grabar el video final.
-- commit: "feat: llamada real a Claude en modo local con las 7 dimensiones"
+- commit: "feat: llamada real a Gemini en modo local con las 7 dimensiones"
 - Depende de: Tarea 13
 
 ## Tarea 15: Verificación de manejo seguro de la clave
 - Checkpoint: sí (manejo de credencial sensible)
-- test (falla): test que revisa que `.env.local` está listado en `.gitignore` y que `ANTHROPIC_API_KEY` no aparece referenciado en ningún archivo dentro de `src/components/` (solo en el route handler server-side); falla si `.gitignore` no existe todavía con esa entrada.
+- test (falla): test que revisa que `.env.local` está listado en `.gitignore` y que `GEMINI_API_KEY` no aparece referenciado en ningún archivo dentro de `src/components/` (solo en el route handler server-side); falla si `.gitignore` no existe todavía con esa entrada.
 - implementa: agregar `.env.local` y `.env*.local` a `.gitignore`, `.env.example` con la variable sin valor real, confirmar que ningún componente cliente importa la key.
 - tests pasan: test en verde.
 - commit: "chore: asegurar que la API key nunca se sube ni se expone al cliente"
@@ -148,11 +148,11 @@
 - Checkpoint: sí (es la publicación real, lo que va a ver el jurado)
 - Regla dura: esta tarea no arranca sola aunque las tareas 13 a 17 estén en verde. Antes de tocar Vercel, Cristian tiene que probar todo en local con sus propios ojos (no solo que los tests automatizados pasen) y dar el visto bueno explícito. Sin ese "sí, dale" en el chat, la tarea queda bloqueada.
 - test (falla): no aplica test automatizado; el checkpoint es la validación manual de Cristian descrita abajo, más la revisión posterior al deploy.
-- implementa: conectar el repo a Vercel, confirmar que no hay `ANTHROPIC_API_KEY` configurada en las variables de entorno de producción (para que el modo estático sea el único posible ahí), deploy.
+- implementa: conectar el repo a Vercel, confirmar que no hay `GEMINI_API_KEY` configurada en las variables de entorno de producción (para que el modo estático sea el único posible ahí), deploy.
 - tests pasan: abrir la URL publicada y confirmar manualmente que carga rápido, que el cuadro de "prueba tu idea" está deshabilitado con el video visible, que las 4 tarjetas funcionan con sus 7 dimensiones, y que se ve bien en mobile.
 - commit: "deploy: primera versión publicada en Vercel"
 - Depende de: Tarea 13, Tarea 14, Tarea 15, Tarea 16, Tarea 17, y validación manual explícita de Cristian en local
 
 ## Verificación end-to-end
-- En local: `npm run dev`, abrir el cuadro "prueba tu idea", escribir una idea real y confirmar que llega una respuesta real de Claude con las 7 dimensiones. Comparar visualmente la página contra el mockup `.dc.html`.
+- En local: `npm run dev`, abrir el cuadro "prueba tu idea", escribir una idea real y confirmar que llega una respuesta real de Gemini con las 7 dimensiones. Comparar visualmente la página contra el mockup `.dc.html`.
 - En publicado: abrir la URL de Vercel, confirmar que el cuadro está deshabilitado, el video se reproduce, las 4 tarjetas cargan con contenido real en sus 7 dimensiones, y la página es usable en un celular.
