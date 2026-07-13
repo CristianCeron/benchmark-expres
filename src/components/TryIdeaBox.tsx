@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Benchmark } from "@/data/benchmarks";
+import { BenchmarkDetail } from "@/components/BenchmarkDetail";
 
 const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE;
 const isLive = DEMO_MODE === "live";
@@ -10,16 +11,27 @@ export function TryIdeaBox() {
   const [idea, setIdea] = useState("");
   const [loading, setLoading] = useState(false);
   const [resultado, setResultado] = useState<Benchmark | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   async function analizar() {
     setLoading(true);
-    const response = await fetch("/api/try-idea", {
-      method: "POST",
-      body: JSON.stringify({ idea }),
-    });
-    const data = await response.json();
-    setResultado(data);
-    setLoading(false);
+    setError(null);
+    try {
+      const response = await fetch("/api/try-idea", {
+        method: "POST",
+        body: JSON.stringify({ idea }),
+      });
+      if (!response.ok) {
+        setError("Gemini no respondió esta vez (puede ser demanda alta momentánea). Intenta de nuevo en unos segundos.");
+        return;
+      }
+      const data = await response.json();
+      setResultado(data);
+    } catch {
+      setError("No se pudo conectar con la IA. Revisa tu conexión e intenta de nuevo.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -64,10 +76,18 @@ export function TryIdeaBox() {
           </p>
         </>
       )}
+      {isLive && error && (
+        <p style={{ fontSize: 12.5, color: "var(--color-accent-100)", marginTop: 12 }}>{error}</p>
+      )}
       {isLive && resultado && (
-        <div style={{ marginTop: 14, fontSize: 12.5, display: "flex", flexDirection: "column", gap: 8 }}>
-          <strong>{resultado.titulo}</strong>
-          <span>{resultado.categoria}</span>
+        <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 12 }}>
+          <div>
+            <span className="tag tag-accent" style={{ fontSize: 10 }}>
+              {resultado.categoria}
+            </span>
+            <h4 style={{ margin: "8px 0 0" }}>{resultado.titulo}</h4>
+          </div>
+          <BenchmarkDetail benchmark={resultado} />
         </div>
       )}
     </div>

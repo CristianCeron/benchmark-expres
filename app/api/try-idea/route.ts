@@ -25,16 +25,20 @@ export async function POST(request: Request) {
 
   const client = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-  const response = await client.models.generateContent({
-    model: "gemini-2.5-flash",
-    contents: `Idea: ${idea}`,
-    config: {
-      systemInstruction: SYSTEM_PROMPT,
-      responseMimeType: "application/json",
-    },
-  });
+  try {
+    const response = await client.models.generateContent({
+      model: "gemini-flash-latest",
+      contents: `Idea: ${idea}`,
+      config: {
+        systemInstruction: SYSTEM_PROMPT,
+        responseMimeType: "application/json",
+      },
+    });
 
-  const parsed = JSON.parse(response.text ?? "{}");
-
-  return Response.json(parsed);
+    const parsed = JSON.parse(response.text ?? "{}");
+    return Response.json(parsed);
+  } catch (error) {
+    console.error("Error llamando a Gemini:", error);
+    return Response.json({ error: "No se pudo generar el análisis" }, { status: 503 });
+  }
 }

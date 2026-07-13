@@ -112,7 +112,7 @@
 - commit: "feat: cuadro prueba tu idea en modo estático con video embebido"
 - Depende de: Tarea 12
 
-## Tarea 14: Función local para la llamada real a IA con las 7 dimensiones [HECHO — esperando prueba manual con key real]
+## Tarea 14: Función local para la llamada real a IA con las 7 dimensiones [HECHO — probado con key real, funciona]
 - Checkpoint: sí (usa la clave personal de Cristian y hace una llamada de red real con costo asociado)
 - test (falla): test de la ruta `app/api/try-idea/route.ts` que envía una idea de prueba y espera una respuesta con las 7 dimensiones en la estructura del tipo `Benchmark`; usa un mock del cliente de Gemini (no llama a la API real en el test), falla porque la ruta no existe.
 - implementa: route handler server-side que lee `GEMINI_API_KEY` de variable de entorno (nunca expuesta al cliente) y llama al modelo de Gemini con la idea recibida, con un prompt que pide explícitamente las 7 dimensiones y que enmarca "señales de tendencia" como lectura razonada, nunca como dato de redes en tiempo real. En `TryIdeaBox`, cuando `NEXT_PUBLIC_DEMO_MODE === "live"`, el formulario se habilita y llama a esta ruta de verdad.
