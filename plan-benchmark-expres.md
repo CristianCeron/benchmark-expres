@@ -88,7 +88,7 @@
 - commit: "content: tendencia, redes y qué hacer/no hacer para última milla"
 - Depende de: Tarea 9
 
-## Tarea 11: Redactar las 3 dimensiones nuevas para deuda de proceso y revisión humana final
+## Tarea 11: Redactar las 3 dimensiones nuevas para deuda de proceso y revisión humana final [HECHO — esperando revisión]
 - Checkpoint: sí (cierra el contenido completo de los 4 estudios de mercado; antes de tocar la interfaz, Cristian confirma que las 3 dimensiones nuevas en los 4 benchmarks son honestas, en especial que "señales de tendencia" no suene a dato en tiempo real que no existe)
 - test (falla): mismo test aplicado al índice 3, más un test que corre los 4 juntos.
 - implementa: igual que la tarea 8, para el benchmark de deuda de proceso cross-sector.

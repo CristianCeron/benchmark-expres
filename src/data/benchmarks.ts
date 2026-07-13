@@ -141,9 +141,21 @@ export const benchmarks: Benchmark[] = [
     ],
     advertencia:
       "Celonis y SAP dominan la categoría de 'process mining'. La oportunidad vive fuera de su alcance técnico, no compite de frente.",
-    señalesTendencia: ["TODO"],
-    ideasRedes: ["TODO"],
-    queHacer: ["TODO"],
-    queNoHacer: ["TODO"],
+    señalesTendencia: [
+      "Más de la mitad de empresas medianas (menos de 1000 empleados) ya está pilotando herramientas de process mining, pero la adopción real en pymes chicas sigue limitada por falta de logs limpios y analistas capacitados",
+      "Los grandes proveedores están bajando el precio de entrada con conectores de 'task mining' más accesibles, señal de que este hueco se puede ir cerrando con el tiempo, no es una ventana indefinida",
+    ],
+    ideasRedes: [
+      "Compartir historias reales anonimizadas de negocios operando en Excel/WhatsApp que encontraron su cuello de botella sin integrar ningún sistema, dirigido a consultores de transformación digital",
+      "Participar en comunidades de transformación digital para pymes, no en foros de process mining enterprise ya capturados por Celonis/SAP",
+    ],
+    queHacer: [
+      "Posicionar el diagnóstico explícitamente para negocios sin logs limpios todavía, el segmento que las herramientas grandes no atienden",
+      "Usar entrevista y observación directa como método principal, sin simular minería de procesos con datos que no existen",
+    ],
+    queNoHacer: [
+      "No competir con Celonis o SAP en el segmento enterprise con logs ya integrados, ese terreno ya está perdido",
+      "No prometer la misma precisión estadística que una herramienta con logs de sistema reales: hay que ser honesto en que es un diagnóstico cualitativo",
+    ],
   },
 ];

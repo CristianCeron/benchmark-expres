@@ -75,10 +75,17 @@ describe("contenido benchmark 3: deuda de proceso sin integración de sistemas",
       expect.arrayContaining(["Celonis", "SAP Signavio"])
     );
   });
+
+  it("tiene las 3 dimensiones nuevas redactadas", () => {
+    assertNuevasDimensionesSinTodo(3);
+  });
 });
 
 describe("los 4 benchmarks juntos", () => {
-  it("ninguno tiene campos placeholder", () => {
-    for (let i = 0; i < 4; i++) assertSinTodo(i);
+  it("ninguno tiene campos placeholder, incluidas las 3 dimensiones nuevas", () => {
+    for (let i = 0; i < 4; i++) {
+      assertSinTodo(i);
+      assertNuevasDimensionesSinTodo(i);
+    }
   });
 });
