@@ -19,7 +19,7 @@ describe("TryIdeaBox", () => {
     expect(screen.getByRole("button", { name: /analizar mi idea/i })).toBeDisabled();
   });
 
-  it("al analizar una idea, muestra el resultado en tarjetas expandibles por dimensión", async () => {
+  it("al analizar una idea, muestra el resultado con todas las dimensiones visibles a la vez", async () => {
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
       json: async () => ({
@@ -48,14 +48,11 @@ describe("TryIdeaBox", () => {
       expect(screen.getByText("Título de prueba")).toBeInTheDocument();
     });
 
-    // La primera sección (apps similares) está expandida por defecto.
+    // Todas las dimensiones se muestran a la vez, sin necesidad de clic.
     expect(screen.getByText("Jugador X")).toBeInTheDocument();
-    // Las demás secciones existen como encabezados pero su contenido está colapsado.
-    expect(screen.getByText("Brecha")).toBeInTheDocument();
-    expect(screen.queryByText("Brecha X")).not.toBeInTheDocument();
-
-    fireEvent.click(screen.getByText("Brecha"));
     expect(screen.getByText("Brecha X")).toBeInTheDocument();
+    expect(screen.getByText("Oportunidad X")).toBeInTheDocument();
+    expect(screen.getByText("Señal X")).toBeInTheDocument();
   });
 
   it("muestra un mensaje de error si Gemini no responde", async () => {

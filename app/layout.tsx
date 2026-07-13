@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./nocturne.css";
+import "./highlight.css";
 
 export const metadata: Metadata = {
   title: "Benchmark Exprés",
-  description: "¿Vale la pena construirlo? Cuatro benchmarks reales antes de construir.",
+  description: "¿Vale la pena construirlo? Escribe tu idea y recibe un estudio de mercado honesto.",
 };
 
 export default function RootLayout({
