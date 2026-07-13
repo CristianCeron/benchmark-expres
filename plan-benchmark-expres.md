@@ -36,6 +36,7 @@ Las tareas originales 2 a 13 de este plan construyeron 4 benchmarks de ejemplo f
 - tests pasan: test en verde.
 - commit: "feat: rediseño del resultado como tarjetas expandibles por dimensión, con fuentes"
 - Depende de: Tarea 20
+- Ajuste posterior [HECHO]: Cristian probó en su propio Chrome y las secciones colapsadas se veían como vacías/rotas sin ninguna señal de que eran clickeables. Se agregó una flechita que rota al expandir/colapsar, y un aviso de "puede tardar 15-20 segundos" mientras Gemini responde. Commit: "fix: agregar flechita de expandir/colapsar y aviso de espera en el análisis".
 
 ## Tarea 22: TryIdeaBox siempre en vivo, con idea de ejemplo precargada [HECHO]
 - Checkpoint: sí (siempre estuvo en vivo desde antes, pero ahora también corre en producción sin que Cristian pruebe cada despliegue con su propia key; se revisa que el manejo de errores de Gemini alcance para no romper la página si falla en producción)
