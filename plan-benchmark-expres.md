@@ -120,7 +120,7 @@
 - commit: "feat: llamada real a Gemini en modo local con las 7 dimensiones"
 - Depende de: Tarea 13
 
-## Tarea 15: Verificación de manejo seguro de la clave
+## Tarea 15: Verificación de manejo seguro de la clave [HECHO]
 - Checkpoint: sí (manejo de credencial sensible)
 - test (falla): test que revisa que `.env.local` está listado en `.gitignore` y que `GEMINI_API_KEY` no aparece referenciado en ningún archivo dentro de `src/components/` (solo en el route handler server-side); falla si `.gitignore` no existe todavía con esa entrada.
 - implementa: agregar `.env.local` y `.env*.local` a `.gitignore`, `.env.example` con la variable sin valor real, confirmar que ningún componente cliente importa la key.
