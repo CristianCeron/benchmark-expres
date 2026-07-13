@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi, beforeEach } from "vitest";
 
 const mockGenerateContent = vi.fn().mockResolvedValue({
   text: JSON.stringify({
@@ -26,6 +26,10 @@ vi.mock("@google/genai", () => {
 });
 
 describe("POST /api/try-idea", () => {
+  beforeEach(() => {
+    mockGenerateContent.mockClear();
+  });
+
   it("devuelve un benchmark con las 7 dimensiones para la idea recibida", async () => {
     process.env.GEMINI_API_KEY = "test-key";
     const { POST } = await import("../app/api/try-idea/route");
@@ -51,7 +55,27 @@ describe("POST /api/try-idea", () => {
     expect(data.fuentes.length).toBeGreaterThan(0);
   });
 
-  it("devuelve un error controlado con status 503 si Gemini falla", async () => {
+  it("reintenta automáticamente si Gemini falla una vez, y responde con éxito", async () => {
+    mockGenerateContent.mockRejectedValueOnce(new Error("UNAVAILABLE"));
+    process.env.GEMINI_API_KEY = "test-key";
+    const { POST } = await import("../app/api/try-idea/route");
+
+    const request = new Request("http://localhost/api/try-idea", {
+      method: "POST",
+      body: JSON.stringify({ idea: "Una app de prueba" }),
+    });
+
+    const response = await POST(request);
+    const data = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(mockGenerateContent).toHaveBeenCalledTimes(2);
+    expect(data.jugadores.length).toBeGreaterThan(0);
+  }, 10000);
+
+  it("devuelve un error controlado con status 503 si Gemini falla las 3 veces", async () => {
+    mockGenerateContent.mockRejectedValueOnce(new Error("UNAVAILABLE"));
+    mockGenerateContent.mockRejectedValueOnce(new Error("UNAVAILABLE"));
     mockGenerateContent.mockRejectedValueOnce(new Error("UNAVAILABLE"));
     process.env.GEMINI_API_KEY = "test-key";
     const { POST } = await import("../app/api/try-idea/route");
@@ -63,5 +87,6 @@ describe("POST /api/try-idea", () => {
 
     const response = await POST(request);
     expect(response.status).toBe(503);
-  });
+    expect(mockGenerateContent).toHaveBeenCalledTimes(3);
+  }, 10000);
 });
