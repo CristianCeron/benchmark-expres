@@ -72,7 +72,7 @@
 - commit: "content: tendencia, redes y qué hacer/no hacer para KYC"
 - Depende de: Tarea 7
 
-## Tarea 9: Redactar las 3 dimensiones nuevas para el benchmark de madurez ágil
+## Tarea 9: Redactar las 3 dimensiones nuevas para el benchmark de madurez ágil [HECHO]
 - Checkpoint: no
 - test (falla): mismo test, aplicado al índice 1.
 - implementa: igual que la tarea 8, para el benchmark de madurez ágil conversacional.

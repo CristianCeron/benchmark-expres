@@ -69,10 +69,22 @@ export const benchmarks: Benchmark[] = [
     ],
     advertencia:
       "Jugadores establecidos venden consultoría cara junto al diagnóstico. Ganar credibilidad frente a agile coaches toma tiempo.",
-    señalesTendencia: ["TODO"],
-    ideasRedes: ["TODO"],
-    queHacer: ["TODO"],
-    queNoHacer: ["TODO"],
+    señalesTendencia: [
+      "Las herramientas líderes están migrando de encuestas puntuales a evaluación continua con IA sobre datos reales de entrega, no solo autopercepción del equipo",
+      "El criterio de madurez está pasando de 'ceremonias bien hechas' a resultados: velocidad de entrega, calidad y satisfacción del cliente por encima de rituales perfectos",
+    ],
+    ideasRedes: [
+      "Publicar comparativas honestas tipo 'scrum perfecto vs entrega real' en LinkedIn dirigidas a agile coaches y heads of delivery",
+      "Ofrecer un mini-diagnóstico corto como lead magnet en comunidades de Scrum Masters y agile coaches",
+    ],
+    queHacer: [
+      "Enfocar el diagnóstico conversacional en resultados de entrega, no solo en adherencia a ceremonias",
+      "Ofrecerlo con cadencia corta y repetible (por ejemplo trimestral), no como auditoría anual única",
+    ],
+    queNoHacer: [
+      "No posicionarlo como reemplazo del agile coach humano: el mercado ya está mostrando que la IA complementa, no reemplaza el coaching",
+      "No prometer un diagnóstico definitivo en una sola sesión, la madurez de un equipo cambia con el tiempo",
+    ],
   },
   {
     categoria: "Marketplaces · Última milla",

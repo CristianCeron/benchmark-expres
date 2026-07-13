@@ -43,6 +43,10 @@ describe("contenido benchmark 1: madurez ágil conversacional", () => {
       expect.arrayContaining(["TeamRetro", "Agile Velocity"])
     );
   });
+
+  it("tiene las 3 dimensiones nuevas redactadas", () => {
+    assertNuevasDimensionesSinTodo(1);
+  });
 });
 
 describe("contenido benchmark 2: verificación de contenido en la entrega", () => {
