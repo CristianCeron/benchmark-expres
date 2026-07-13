@@ -80,7 +80,7 @@
 - commit: "content: tendencia, redes y qué hacer/no hacer para madurez ágil"
 - Depende de: Tarea 8
 
-## Tarea 10: Redactar las 3 dimensiones nuevas para el benchmark de última milla
+## Tarea 10: Redactar las 3 dimensiones nuevas para el benchmark de última milla [HECHO]
 - Checkpoint: no
 - test (falla): mismo test, aplicado al índice 2.
 - implementa: igual que la tarea 8, para el benchmark de verificación de contenido en la entrega.

@@ -105,10 +105,22 @@ export const benchmarks: Benchmark[] = [
     ],
     advertencia:
       "La logística de última milla ya está consolidada. La oportunidad es un nicho angosto, la verificación de contenido, no la ruta completa.",
-    señalesTendencia: ["TODO"],
-    ideasRedes: ["TODO"],
-    queHacer: ["TODO"],
-    queNoHacer: ["TODO"],
+    señalesTendencia: [
+      "La prueba de entrega automatizada ya bajó quejas de clientes hasta un 34% y subió el rendimiento de los conductores hasta un 30% donde se implementó",
+      "La calidad de la prueba de entrega se está tratando como control financiero (evita disputas y contracargos), no solo como detalle de servicio al cliente",
+    ],
+    ideasRedes: [
+      "Mostrar casos con métricas concretas de reducción de disputas en LinkedIn y foros de operaciones de e-commerce y última milla",
+      "Contenido con ángulo humano: cómo la verificación automática protege a los conductores de reclamos injustos, no solo eficiencia para la empresa",
+    ],
+    queHacer: [
+      "Enfocar el pitch en reducción de disputas y contracargos como retorno medible, que es justo lo que el mercado ya está validando",
+      "Construirlo como capa adicional sobre plataformas existentes (Onfleet, Bringg, etc.), no como reemplazo de la suite logística completa",
+    ],
+    queNoHacer: [
+      "No competir de frente en ruteo u optimización de rutas, ese terreno ya está consolidado y no es la brecha real",
+      "No capturar más contexto o comportamiento del conductor sin ser explícito sobre qué se audita y por qué",
+    ],
   },
   {
     categoria: "Cross-sector · Operaciones",

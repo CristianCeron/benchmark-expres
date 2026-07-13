@@ -59,6 +59,10 @@ describe("contenido benchmark 2: verificación de contenido en la entrega", () =
       expect.arrayContaining(["Onfleet", "Bringg"])
     );
   });
+
+  it("tiene las 3 dimensiones nuevas redactadas", () => {
+    assertNuevasDimensionesSinTodo(2);
+  });
 });
 
 describe("contenido benchmark 3: deuda de proceso sin integración de sistemas", () => {
