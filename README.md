@@ -25,3 +25,7 @@ El diseño usa un sistema propio, oscuro y con un acento dorado para el llamado 
 ## Links
 - Repo: github.com/CristianCeron/benchmark-expres
 - Demo en vivo: benchmark-expres.vercel.app
+
+---
+
+Este proyecto es mi forma de trabajar hecha herramienta. Si te interesa cómo pienso, hablemos: [linkedin.com/in/cristianceronb](https://www.linkedin.com/in/cristianceronb/)
