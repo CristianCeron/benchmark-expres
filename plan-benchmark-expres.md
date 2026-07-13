@@ -64,6 +64,14 @@ Las tareas originales 2 a 13 de este plan construyeron 4 benchmarks de ejemplo f
 - commit: "feat: footer con autoría y link de contacto transcrito del mockup"
 - Depende de: Tarea 1
 
+## Tarea 23: Landing, tutorial de bienvenida y resultado como grilla con color [HECHO]
+- Checkpoint: no
+- test (falla): tests de `BenchmarkApp` que esperan landing por defecto, cambio a herramienta con "Probar mi idea", vuelta a landing con "Volver al inicio", tutorial visible la primera vez (sin `localStorage`), tutorial oculto si ya se marcó visto, "Ver tutorial" lo reactiva, y "Saltar" lo cierra y marca `localStorage`. Test de `TryIdeaBox` ajustado: ya no espera un acordeón, espera que las 9 dimensiones estén visibles a la vez tras analizar.
+- implementa: Cristian actualizó el mockup de diseño con una landing nueva ("¿Cuántas veces construiste algo que ya existía?"), un tutorial modal de 3 pasos (con `localStorage` para mostrarlo solo la primera vez), y reemplazó el acordeón del resultado por una grilla de tarjetas siempre visibles, coloreadas según el tipo (positivo/precaución/neutral). Se construyeron los componentes `BenchmarkApp` (estado de vista landing/tool y tutorial), `LandingPage`, `Nav`, `Tutorial`, y `ResultGrid` (reemplaza a `BenchmarkDetail`, que se borró). Se agregó `app/highlight.css` con los tokens de color propios del CTA principal (no son parte de Nocturne base).
+- tests pasan: 19 tests en verde, `tsc --noEmit` sin errores, verificado en el navegador de punta a punta (landing → tutorial → análisis real con jugadores reales → volver al inicio).
+- commit: "feat: landing con CTA, tutorial de bienvenida, y resultado en grilla con color por tipo"
+- Depende de: Tarea 22
+
 ## Tarea 18: Deploy a Vercel
 - Checkpoint: sí (es la publicación real, lo que va a ver el jurado)
 - Regla dura: esta tarea no arranca sola aunque todo lo anterior esté en verde. Antes de tocar Vercel, Cristian tiene que probar todo en local con sus propios ojos (no solo que los tests automatizados pasen) y dar el visto bueno explícito. Sin ese "sí, dale" en el chat, la tarea queda bloqueada.
@@ -71,7 +79,7 @@ Las tareas originales 2 a 13 de este plan construyeron 4 benchmarks de ejemplo f
 - implementa: conectar el repo a Vercel, configurar `GEMINI_API_KEY` como variable de entorno de producción (ahora sí hace falta ahí, porque el cuadro llama a Gemini también en producción), deploy.
 - tests pasan: abrir la URL publicada, confirmar que carga rápido, que "prueba tu idea" ya tiene la idea de ejemplo precargada, que analizar (con el ejemplo o una idea propia) devuelve un resultado real en tarjetas expandibles, y que se ve bien en mobile.
 - commit: "deploy: primera versión publicada en Vercel"
-- Depende de: Tarea 15, Tarea 16, Tarea 17, Tarea 22, y validación manual explícita de Cristian en local
+- Depende de: Tarea 15, Tarea 16, Tarea 17, Tarea 22, Tarea 23, y validación manual explícita de Cristian en local
 
 ## Verificación end-to-end
 - En local: `npm run dev`, abrir el cuadro "prueba tu idea", analizar la idea de ejemplo o una propia, confirmar que llega una respuesta real de Gemini con las 8 dimensiones en tarjetas expandibles, y que la advertencia se ve siempre.
