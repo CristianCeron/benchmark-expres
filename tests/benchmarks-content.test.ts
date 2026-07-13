@@ -9,6 +9,14 @@ function assertSinTodo(index: number) {
   }
 }
 
+function assertNuevasDimensionesSinTodo(index: number) {
+  const b = benchmarks[index];
+  const valores = [...b.señalesTendencia, ...b.ideasRedes, ...b.queHacer, ...b.queNoHacer];
+  for (const v of valores) {
+    expect(v).not.toBe("TODO");
+  }
+}
+
 describe("contenido benchmark 0: explicador de rechazos KYC", () => {
   it("no tiene campos placeholder", () => {
     assertSinTodo(0);
@@ -18,6 +26,10 @@ describe("contenido benchmark 0: explicador de rechazos KYC", () => {
     expect(benchmarks[0].jugadores).toEqual(
       expect.arrayContaining(["Truora", "Onfido", "Sumsub"])
     );
+  });
+
+  it("tiene las 3 dimensiones nuevas redactadas", () => {
+    assertNuevasDimensionesSinTodo(0);
   });
 });
 

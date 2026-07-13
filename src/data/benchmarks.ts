@@ -33,10 +33,22 @@ export const benchmarks: Benchmark[] = [
     ],
     advertencia:
       "Mercado con jugadores grandes y consolidados. La oportunidad es una capa complementaria, no un reemplazo del motor KYC.",
-    señalesTendencia: ["TODO"],
-    ideasRedes: ["TODO"],
-    queHacer: ["TODO"],
-    queNoHacer: ["TODO"],
+    señalesTendencia: [
+      "Más del 70% del onboarding KYC ya es automatizado con biometría, pero el abandono durante el proceso sigue en 34%: automatizar no resolvió la fricción",
+      "El fraude con deepfakes e identidades sintéticas ya es ~22% de los intentos de fraude digital, lo que empuja a subir la exigencia de verificación, no a bajarla",
+    ],
+    ideasRedes: [
+      "Contenido corto en LinkedIn dirigido a founders fintech mostrando el contraste entre un rechazo KYC mal explicado y uno bien explicado",
+      "Compartir el dato del 25 a 45% de falsos positivos como gancho en comunidades de compliance y fintech, con la fuente citada",
+    ],
+    queHacer: [
+      "Diseñar la capa de explicación como complemento del motor KYC existente, no como reemplazo",
+      "Medir y comunicar la reducción de tickets de soporte como métrica central de valor",
+    ],
+    queNoHacer: [
+      "No prometer que se puede relajar el rigor regulatorio: AMLR y eIDAS 2.0 entran en 2027 y van a exigir más, no menos",
+      "No exponer datos biométricos o de identidad en los mensajes de explicación sin control de privacidad",
+    ],
   },
   {
     categoria: "PM · Transformación ágil",

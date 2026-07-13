@@ -64,7 +64,7 @@
 - commit: "feat: campos de tendencia, redes y qué hacer/no hacer en el tipo Benchmark"
 - Depende de: Tarea 6
 
-## Tarea 8: Redactar las 3 dimensiones nuevas para el benchmark KYC
+## Tarea 8: Redactar las 3 dimensiones nuevas para el benchmark KYC [HECHO]
 - Checkpoint: no
 - test (falla): test que verifica que el índice 0 no tiene ningún campo nuevo en `"TODO"`.
 - implementa: investigar y redactar señales de tendencia, ideas para mover redes, y qué hacer/qué no hacer para el benchmark de explicador de rechazos KYC. Las señales de tendencia se redactan como lectura razonada del sector (con evidencia donde se pueda, ej. regulación o adopción reciente), nunca como si fueran una métrica de redes sociales en vivo.
