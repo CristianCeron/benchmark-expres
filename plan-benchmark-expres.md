@@ -104,7 +104,7 @@
 - commit: "feat: grilla de benchmarks con detalle expandible usando Nocturne"
 - Depende de: Tarea 11
 
-## Tarea 13: Cuadro "prueba tu idea" en modo estático
+## Tarea 13: Cuadro "prueba tu idea" en modo estático [HECHO]
 - Checkpoint: no
 - test (falla): test que renderiza el cuadro con `NEXT_PUBLIC_DEMO_MODE` sin definir (caso por defecto, el de Vercel) y espera input y botón deshabilitados (clases `.input`, `.btn.btn-primary`), contador con texto "30/30" (clase `.tag.tag-accent`), mensaje explicativo, y un elemento `<video>` visible; falla porque el componente no existe.
 - implementa: componente `TryIdeaBox` recreando el markup del mockup (tarjeta con textarea, botón y contador), controlado por `NEXT_PUBLIC_DEMO_MODE` (`"live"` o cualquier otro valor/ausente = estático). En modo estático: campos deshabilitados, contador fijo, mensaje, y el video en `public/video/demo-local.mp4` embebido en el recuadro donde el mockup deja el ícono de play como placeholder.

@@ -1,4 +1,5 @@
 import { BenchmarkGrid } from "@/components/BenchmarkGrid";
+import { TryIdeaBox } from "@/components/TryIdeaBox";
 
 export default function Home() {
   return (
@@ -23,7 +24,16 @@ export default function Home() {
         </p>
       </div>
 
-      <div style={{ padding: "0 56px 40px" }}>
+      <div
+        style={{
+          padding: "0 56px 40px",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: 32,
+          alignItems: "start",
+        }}
+      >
+        <TryIdeaBox />
         <BenchmarkGrid />
       </div>
     </div>
