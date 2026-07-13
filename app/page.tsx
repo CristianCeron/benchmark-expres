@@ -1,5 +1,6 @@
 import { BenchmarkGrid } from "@/components/BenchmarkGrid";
 import { TryIdeaBox } from "@/components/TryIdeaBox";
+import { Footer } from "@/components/Footer";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -29,6 +30,8 @@ export default function Home() {
         <TryIdeaBox />
         <BenchmarkGrid />
       </div>
+
+      <Footer />
     </div>
   );
 }

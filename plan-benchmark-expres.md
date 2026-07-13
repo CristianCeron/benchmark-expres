@@ -136,7 +136,7 @@
 - commit: "style: ajuste responsive sobre el layout de Nocturne"
 - Depende de: Tarea 12
 
-## Tarea 17: Autoría y footer
+## Tarea 17: Autoría y footer [HECHO]
 - Checkpoint: no
 - test (falla): test que renderiza el footer y espera el nombre de Cristian, la frase de objetivo del mockup, y el link a linkedin.com/in/cristianceronb con `target="_blank"`; falla porque el footer no existe.
 - implementa: componente `Footer` transcribiendo tal cual el texto y el link ya escritos en el mockup.
