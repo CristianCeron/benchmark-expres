@@ -31,7 +31,7 @@
 - commit: "content: benchmark KYC transcrito del mockup"
 - Depende de: Tarea 2
 
-## Tarea 4: Transcribir benchmark 2, madurez ágil conversacional
+## Tarea 4: Transcribir benchmark 2, madurez ágil conversacional [HECHO]
 - Checkpoint: no
 - test (falla): mismo test de forma que la tarea 3, aplicado al índice 1.
 - implementa: copiar el contenido del mockup (TeamRetro, Agile Velocity, AgilityHealth Radars, Info-Tech Research Group y el resto de campos) al índice 1.

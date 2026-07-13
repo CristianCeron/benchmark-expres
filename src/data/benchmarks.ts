@@ -30,13 +30,24 @@ export const benchmarks: Benchmark[] = [
       "Mercado con jugadores grandes y consolidados. La oportunidad es una capa complementaria, no un reemplazo del motor KYC.",
   },
   {
-    categoria: "TODO",
-    titulo: "TODO",
-    jugadores: ["TODO"],
-    fortalezas: ["TODO"],
-    brecha: ["TODO"],
-    oportunidad: ["TODO"],
-    advertencia: "TODO",
+    categoria: "PM · Transformación ágil",
+    titulo: "Chequeo de madurez ágil conversacional",
+    jugadores: ["TeamRetro", "Agile Velocity", "AgilityHealth Radars", "Info-Tech Research Group"],
+    fortalezas: [
+      "Modelos de madurez validados con años de datos de equipos reales",
+      "Dashboards comparativos entre equipos y portafolios",
+      "Integración con Jira, Teams y Asana",
+    ],
+    brecha: [
+      "Todos son encuestas estáticas de opción múltiple, no una conversación real",
+      "Interpretar el resultado exige agendar una sesión con un consultor",
+    ],
+    oportunidad: [
+      "Chequeo por conversación con IA que repregunta según cada respuesta",
+      "Diagnóstico en minutos, sin agendar nada ni pagar consultoría",
+    ],
+    advertencia:
+      "Jugadores establecidos venden consultoría cara junto al diagnóstico. Ganar credibilidad frente a agile coaches toma tiempo.",
   },
   {
     categoria: "TODO",
