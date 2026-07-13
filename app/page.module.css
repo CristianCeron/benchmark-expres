@@ -1,0 +1,32 @@
+.nav {
+  padding: 24px 56px;
+}
+
+.hero {
+  padding: 8px 56px 40px;
+  max-width: 640px;
+}
+
+.content {
+  padding: 0 56px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 16px 20px;
+  }
+
+  .hero {
+    padding: 8px 20px 32px;
+    max-width: 100%;
+  }
+
+  .content {
+    padding: 0 20px 32px;
+    gap: 20px;
+  }
+}

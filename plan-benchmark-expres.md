@@ -128,7 +128,7 @@
 - commit: "chore: asegurar que la API key nunca se sube ni se expone al cliente"
 - Depende de: Tarea 14
 
-## Tarea 16: Responsive y verificación visual contra el mockup
+## Tarea 16: Responsive y verificación visual contra el mockup [HECHO]
 - Checkpoint: no
 - test (falla): no aplica test automatizado de diseño visual; se deja como verificación manual en navegador (desktop y mobile) descrita en la sección de Verificación de este plan.
 - implementa: el mockup ya define el layout desktop (grid `auto-fit`, nav, footer); se ajusta el breakpoint mobile para que la grilla colapse a una columna y el nav/footer no se corten en pantallas angostas, incluyendo el detalle de 7 secciones dentro de cada tarjeta.

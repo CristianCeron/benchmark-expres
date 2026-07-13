@@ -1,5 +1,6 @@
 import { BenchmarkGrid } from "@/components/BenchmarkGrid";
 import { TryIdeaBox } from "@/components/TryIdeaBox";
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
@@ -13,26 +14,18 @@ export default function Home() {
         fontFamily: "var(--font-body)",
       }}
     >
-      <div style={{ padding: "24px 56px" }}>
+      <div className={styles.nav}>
         <div className="nav-brand">Benchmark Exprés</div>
       </div>
 
-      <div style={{ padding: "8px 56px 40px", maxWidth: 640 }}>
+      <div className={styles.hero}>
         <h1 style={{ margin: "0 0 14px", fontSize: 36 }}>¿Vale la pena construirlo?</h1>
         <p style={{ fontSize: 15, opacity: 0.75, margin: 0 }}>
           Cuatro benchmarks reales: quién existe, qué hace bien, y dónde queda espacio para diferenciarse.
         </p>
       </div>
 
-      <div
-        style={{
-          padding: "0 56px 40px",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: 32,
-          alignItems: "start",
-        }}
-      >
+      <div className={styles.content}>
         <TryIdeaBox />
         <BenchmarkGrid />
       </div>
