@@ -72,14 +72,12 @@ Las tareas originales 2 a 13 de este plan construyeron 4 benchmarks de ejemplo f
 - commit: "feat: landing con CTA, tutorial de bienvenida, y resultado en grilla con color por tipo"
 - Depende de: Tarea 22
 
-## Tarea 18: Deploy a Vercel
+## Tarea 18: Deploy a Vercel [HECHO]
 - Checkpoint: sí (es la publicación real, lo que va a ver el jurado)
-- Regla dura: esta tarea no arranca sola aunque todo lo anterior esté en verde. Antes de tocar Vercel, Cristian tiene que probar todo en local con sus propios ojos (no solo que los tests automatizados pasen) y dar el visto bueno explícito. Sin ese "sí, dale" en el chat, la tarea queda bloqueada.
-- test (falla): no aplica test automatizado; el checkpoint es la validación manual de Cristian descrita abajo, más la revisión posterior al deploy.
-- implementa: conectar el repo a Vercel, configurar `GEMINI_API_KEY` como variable de entorno de producción (ahora sí hace falta ahí, porque el cuadro llama a Gemini también en producción), deploy.
-- tests pasan: abrir la URL publicada, confirmar que carga rápido, que "prueba tu idea" ya tiene la idea de ejemplo precargada, que analizar (con el ejemplo o una idea propia) devuelve un resultado real en tarjetas expandibles, y que se ve bien en mobile.
-- commit: "deploy: primera versión publicada en Vercel"
-- Depende de: Tarea 15, Tarea 16, Tarea 17, Tarea 22, Tarea 23, y validación manual explícita de Cristian en local
+- implementa: repo conectado a GitHub (`github.com/CristianCeron/benchmark-expres`, remoto por SSH), proyecto importado en Vercel desde ahí. Primer deploy salió con error 503 en producción porque la variable `GEMINI_API_KEY` nunca se había agregado en Vercel (quedó solo en `.env.local`); se agregó en Settings → Environment Variables para los 3 entornos y se hizo redeploy manual. Confirmado con Cristian probando la URL pública en su navegador: el análisis real funciona en producción.
+- Ajuste posterior [HECHO]: se quitó la idea de ejemplo precargada del textarea (Cristian prefirió que el cuadro empiece vacío). Commit: "fix: quitar la idea de ejemplo precargada, el cuadro empieza vacío".
+- commit: "deploy: primera versión publicada en Vercel" (deploy en sí se hizo desde el dashboard de Vercel, no por commit; el repo en GitHub es la fuente que Vercel redeploya automáticamente en cada push a `main`)
+- Depende de: Tarea 15, Tarea 16, Tarea 17, Tarea 22, Tarea 23, Tarea 24, y validación manual explícita de Cristian en local
 
 ## Tarea 24: Reintento automático con backoff ante fallas de Gemini [HECHO]
 - Checkpoint: no
