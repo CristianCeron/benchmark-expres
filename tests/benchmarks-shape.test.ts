@@ -17,4 +17,13 @@ describe("datos de benchmarks: forma", () => {
       expect(b.advertencia).toBeTruthy();
     }
   });
+
+  it("cada benchmark tiene las 3 dimensiones nuevas no vacías", () => {
+    for (const b of benchmarks) {
+      expect(b.señalesTendencia.length).toBeGreaterThan(0);
+      expect(b.ideasRedes.length).toBeGreaterThan(0);
+      expect(b.queHacer.length).toBeGreaterThan(0);
+      expect(b.queNoHacer.length).toBeGreaterThan(0);
+    }
+  });
 });

@@ -56,7 +56,7 @@
 - commit: "content: benchmark deuda de proceso transcrito del mockup"
 - Depende de: Tarea 5
 
-## Tarea 7: Ampliar el tipo Benchmark con las 3 dimensiones nuevas
+## Tarea 7: Ampliar el tipo Benchmark con las 3 dimensiones nuevas [HECHO]
 - Checkpoint: no
 - test (falla): test de forma extendido que espera en cada uno de los 4 benchmarks los campos `señalesTendencia` (mínimo 1 item), `ideasRedes` (mínimo 1 item), `queHacer` (mínimo 1 item) y `queNoHacer` (mínimo 1 item); falla porque esos campos no existen en el tipo.
 - implementa: agregar los 4 campos nuevos a la interfaz `Benchmark` en `src/data/benchmarks.ts`, y placeholders `["TODO"]` / `"TODO"` en los 4 objetos existentes (sin tocar los 7 campos ya transcritos).

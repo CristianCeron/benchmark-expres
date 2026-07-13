@@ -6,6 +6,11 @@ export interface Benchmark {
   brecha: string[];
   oportunidad: string[];
   advertencia: string;
+  /** Lectura razonada del sector, no es un dato de redes sociales en tiempo real. */
+  señalesTendencia: string[];
+  ideasRedes: string[];
+  queHacer: string[];
+  queNoHacer: string[];
 }
 
 export const benchmarks: Benchmark[] = [
@@ -28,6 +33,10 @@ export const benchmarks: Benchmark[] = [
     ],
     advertencia:
       "Mercado con jugadores grandes y consolidados. La oportunidad es una capa complementaria, no un reemplazo del motor KYC.",
+    señalesTendencia: ["TODO"],
+    ideasRedes: ["TODO"],
+    queHacer: ["TODO"],
+    queNoHacer: ["TODO"],
   },
   {
     categoria: "PM · Transformación ágil",
@@ -48,6 +57,10 @@ export const benchmarks: Benchmark[] = [
     ],
     advertencia:
       "Jugadores establecidos venden consultoría cara junto al diagnóstico. Ganar credibilidad frente a agile coaches toma tiempo.",
+    señalesTendencia: ["TODO"],
+    ideasRedes: ["TODO"],
+    queHacer: ["TODO"],
+    queNoHacer: ["TODO"],
   },
   {
     categoria: "Marketplaces · Última milla",
@@ -68,6 +81,10 @@ export const benchmarks: Benchmark[] = [
     ],
     advertencia:
       "La logística de última milla ya está consolidada. La oportunidad es un nicho angosto, la verificación de contenido, no la ruta completa.",
+    señalesTendencia: ["TODO"],
+    ideasRedes: ["TODO"],
+    queHacer: ["TODO"],
+    queNoHacer: ["TODO"],
   },
   {
     categoria: "Cross-sector · Operaciones",
@@ -88,5 +105,9 @@ export const benchmarks: Benchmark[] = [
     ],
     advertencia:
       "Celonis y SAP dominan la categoría de 'process mining'. La oportunidad vive fuera de su alcance técnico, no compite de frente.",
+    señalesTendencia: ["TODO"],
+    ideasRedes: ["TODO"],
+    queHacer: ["TODO"],
+    queNoHacer: ["TODO"],
   },
 ];
