@@ -136,6 +136,15 @@ export function ResultGrid({ benchmark: b }: { benchmark: Benchmark }) {
           border: "1px solid var(--color-accent-800)",
         }}
       >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 256 256"
+          fill="var(--color-accent-300)"
+          style={{ flex: "none", marginTop: 1 }}
+        >
+          <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z" />
+        </svg>
         <p style={{ margin: 0, fontSize: 13, color: "var(--color-accent-100)" }}>{b.advertencia}</p>
       </div>
     </div>
