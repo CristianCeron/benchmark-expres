@@ -32,3 +32,15 @@ describe("contenido benchmark 1: madurez ágil conversacional", () => {
     );
   });
 });
+
+describe("contenido benchmark 2: verificación de contenido en la entrega", () => {
+  it("no tiene campos placeholder", () => {
+    assertSinTodo(2);
+  });
+
+  it("incluye jugadores reales de última milla", () => {
+    expect(benchmarks[2].jugadores).toEqual(
+      expect.arrayContaining(["Onfleet", "Bringg"])
+    );
+  });
+});

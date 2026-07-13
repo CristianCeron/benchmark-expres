@@ -39,7 +39,7 @@
 - commit: "content: benchmark madurez ágil transcrito del mockup"
 - Depende de: Tarea 3
 
-## Tarea 5: Transcribir benchmark 3, verificación de contenido en la entrega
+## Tarea 5: Transcribir benchmark 3, verificación de contenido en la entrega [HECHO]
 - Checkpoint: no
 - test (falla): mismo test de forma, aplicado al índice 2.
 - implementa: copiar el contenido del mockup (Onfleet, Bringg, Track-POD, Locus, nuVizz y el resto de campos) al índice 2.

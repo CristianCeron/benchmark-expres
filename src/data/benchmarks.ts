@@ -50,13 +50,24 @@ export const benchmarks: Benchmark[] = [
       "Jugadores establecidos venden consultoría cara junto al diagnóstico. Ganar credibilidad frente a agile coaches toma tiempo.",
   },
   {
-    categoria: "TODO",
-    titulo: "TODO",
-    jugadores: ["TODO"],
-    fortalezas: ["TODO"],
-    brecha: ["TODO"],
-    oportunidad: ["TODO"],
-    advertencia: "TODO",
+    categoria: "Marketplaces · Última milla",
+    titulo: "Verificación de contenido en la entrega",
+    jugadores: ["Onfleet", "Bringg", "Track-POD", "Locus", "nuVizz"],
+    fortalezas: [
+      "Prueba de entrega con foto, firma y GPS en cada parada",
+      "Notificaciones automáticas e integración con ERP/CRM",
+      "Dashboards de disputas y desempeño por conductor",
+    ],
+    brecha: [
+      "Todos capturan la foto de entrega, ninguno verifica que el contenido sea correcto",
+      "Confirmar que lo entregado coincide con el pedido sigue siendo manual",
+    ],
+    oportunidad: [
+      "Visión por computador que compara la foto contra el pedido y marca discrepancias",
+      "Detecta el error antes de que el cliente reclame, no después",
+    ],
+    advertencia:
+      "La logística de última milla ya está consolidada. La oportunidad es un nicho angosto, la verificación de contenido, no la ruta completa.",
   },
   {
     categoria: "TODO",
