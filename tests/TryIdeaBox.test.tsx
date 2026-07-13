@@ -3,20 +3,20 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { TryIdeaBox } from "@/components/TryIdeaBox";
 
 describe("TryIdeaBox", () => {
-  it("input y botón están habilitados desde el inicio, con una idea de ejemplo precargada", () => {
+  it("el cuadro empieza vacío y el botón deshabilitado", () => {
     render(<TryIdeaBox />);
     const textarea = screen.getByPlaceholderText(/describe tu idea/i);
     expect(textarea).not.toBeDisabled();
-    expect((textarea as HTMLTextAreaElement).value.length).toBeGreaterThan(0);
-    expect(screen.getByRole("button", { name: /analizar mi idea/i })).not.toBeDisabled();
+    expect((textarea as HTMLTextAreaElement).value).toBe("");
+    expect(screen.getByRole("button", { name: /analizar mi idea/i })).toBeDisabled();
   });
 
-  it("el botón se deshabilita si se borra la idea", () => {
+  it("el botón se habilita al escribir una idea", () => {
     render(<TryIdeaBox />);
     fireEvent.change(screen.getByPlaceholderText(/describe tu idea/i), {
-      target: { value: "" },
+      target: { value: "Una idea de prueba" },
     });
-    expect(screen.getByRole("button", { name: /analizar mi idea/i })).toBeDisabled();
+    expect(screen.getByRole("button", { name: /analizar mi idea/i })).not.toBeDisabled();
   });
 
   it("al analizar una idea, muestra el resultado con todas las dimensiones visibles a la vez", async () => {

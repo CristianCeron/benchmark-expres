@@ -4,11 +4,8 @@ import { useState } from "react";
 import type { Benchmark } from "@/types/benchmark";
 import { ResultGrid } from "@/components/ResultGrid";
 
-const IDEA_EJEMPLO =
-  "Una app que ayuda a restaurantes pequeños a predecir cuánto inventario de comida perecedera necesitan comprar cada semana";
-
 export function TryIdeaBox() {
-  const [idea, setIdea] = useState(IDEA_EJEMPLO);
+  const [idea, setIdea] = useState("");
   const [loading, setLoading] = useState(false);
   const [resultado, setResultado] = useState<Benchmark | null>(null);
   const [error, setError] = useState<string | null>(null);
