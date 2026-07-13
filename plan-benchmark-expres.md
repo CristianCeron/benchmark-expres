@@ -96,7 +96,7 @@
 - commit: "content: tendencia, redes y qué hacer/no hacer para deuda de proceso"
 - Depende de: Tarea 10
 
-## Tarea 12: Grilla de tarjetas y detalle expandible con clases de Nocturne
+## Tarea 12: Grilla de tarjetas y detalle expandible con clases de Nocturne [HECHO]
 - Checkpoint: no
 - test (falla): test de componente que renderiza la grilla de 4 tarjetas con las 7 dimensiones, espera que la primera esté expandida al cargar y las otras 3 colapsadas; falla porque el componente no existe.
 - implementa: componentes `BenchmarkCard` y `BenchmarkGrid` en `src/components/`, recreando la estructura del mockup (clases `.card`, `.tag`, `.tag-accent`, `.tag-neutral`) con estado de expandido/colapsado por clic, primera tarjeta expandida por defecto, y las 7 secciones en bullets cortos dentro del detalle expandido.
