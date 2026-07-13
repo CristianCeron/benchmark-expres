@@ -2,29 +2,24 @@ import { describe, expect, it, vi } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { TryIdeaBox } from "@/components/TryIdeaBox";
 
-describe("TryIdeaBox en modo estático (NEXT_PUBLIC_DEMO_MODE sin definir)", () => {
-  it("muestra input y botón deshabilitados", () => {
+describe("TryIdeaBox", () => {
+  it("input y botón están habilitados desde el inicio, con una idea de ejemplo precargada", () => {
     render(<TryIdeaBox />);
-    expect(screen.getByPlaceholderText(/describe tu idea/i)).toBeDisabled();
+    const textarea = screen.getByPlaceholderText(/describe tu idea/i);
+    expect(textarea).not.toBeDisabled();
+    expect((textarea as HTMLTextAreaElement).value.length).toBeGreaterThan(0);
+    expect(screen.getByRole("button", { name: /analizar mi idea/i })).not.toBeDisabled();
+  });
+
+  it("el botón se deshabilita si se borra la idea", () => {
+    render(<TryIdeaBox />);
+    fireEvent.change(screen.getByPlaceholderText(/describe tu idea/i), {
+      target: { value: "" },
+    });
     expect(screen.getByRole("button", { name: /analizar mi idea/i })).toBeDisabled();
   });
 
-  it("muestra el contador fijo en 30/30", () => {
-    render(<TryIdeaBox />);
-    expect(screen.getByText("30/30")).toBeInTheDocument();
-  });
-
-  it("muestra el mensaje explicativo y el video embebido", () => {
-    render(<TryIdeaBox />);
-    expect(screen.getByText(/se activa con/i)).toBeInTheDocument();
-    expect(screen.getByTestId("demo-local-video")).toBeInTheDocument();
-  });
-});
-
-describe("TryIdeaBox en modo live", () => {
-  it("al analizar una idea, muestra las 7 dimensiones del resultado", async () => {
-    vi.stubEnv("NEXT_PUBLIC_DEMO_MODE", "live");
-    vi.resetModules();
+  it("al analizar una idea, muestra el resultado en tarjetas expandibles por dimensión", async () => {
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
       json: async () => ({
@@ -39,24 +34,41 @@ describe("TryIdeaBox en modo live", () => {
         ideasRedes: ["Idea de redes X"],
         queHacer: ["Hacer X"],
         queNoHacer: ["No hacer X"],
+        fuentes: ["https://ejemplo.com/fuente"],
       }),
     }) as unknown as typeof fetch;
 
-    const { TryIdeaBox: LiveTryIdeaBox } = await import("@/components/TryIdeaBox");
-    render(<LiveTryIdeaBox />);
-
-    const textarea = screen.getByPlaceholderText(/describe tu idea/i);
-    expect(textarea).not.toBeDisabled();
-
-    fireEvent.change(textarea, { target: { value: "Una idea de prueba" } });
+    render(<TryIdeaBox />);
+    fireEvent.change(screen.getByPlaceholderText(/describe tu idea/i), {
+      target: { value: "Una idea de prueba" },
+    });
     fireEvent.click(screen.getByRole("button", { name: /analizar mi idea/i }));
 
     await waitFor(() => {
       expect(screen.getByText("Título de prueba")).toBeInTheDocument();
     });
-    expect(screen.getByText("Fortaleza X")).toBeInTheDocument();
-    expect(screen.getByText("Señal X")).toBeInTheDocument();
 
-    vi.unstubAllEnvs();
+    // La primera sección (apps similares) está expandida por defecto.
+    expect(screen.getByText("Jugador X")).toBeInTheDocument();
+    // Las demás secciones existen como encabezados pero su contenido está colapsado.
+    expect(screen.getByText("Brecha")).toBeInTheDocument();
+    expect(screen.queryByText("Brecha X")).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByText("Brecha"));
+    expect(screen.getByText("Brecha X")).toBeInTheDocument();
+  });
+
+  it("muestra un mensaje de error si Gemini no responde", async () => {
+    global.fetch = vi.fn().mockResolvedValue({ ok: false }) as unknown as typeof fetch;
+
+    render(<TryIdeaBox />);
+    fireEvent.change(screen.getByPlaceholderText(/describe tu idea/i), {
+      target: { value: "Una idea de prueba" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /analizar mi idea/i }));
+
+    await waitFor(() => {
+      expect(screen.getByText(/gemini no respondió/i)).toBeInTheDocument();
+    });
   });
 });

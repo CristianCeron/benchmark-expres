@@ -13,6 +13,7 @@ const mockGenerateContent = vi.fn().mockResolvedValue({
     ideasRedes: ["Idea de redes de ejemplo"],
     queHacer: ["Hacer esto"],
     queNoHacer: ["No hacer esto otro"],
+    fuentes: ["https://ejemplo.com/fuente"],
   }),
 });
 
@@ -47,6 +48,7 @@ describe("POST /api/try-idea", () => {
     expect(data.ideasRedes.length).toBeGreaterThan(0);
     expect(data.queHacer.length).toBeGreaterThan(0);
     expect(data.queNoHacer.length).toBeGreaterThan(0);
+    expect(data.fuentes.length).toBeGreaterThan(0);
   });
 
   it("devuelve un error controlado con status 503 si Gemini falla", async () => {

@@ -1,6 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 
-const SYSTEM_PROMPT = `Eres el motor de Benchmark Exprés. Dada una idea de producto o negocio, entregas un estudio de mercado honesto con 7 dimensiones, en JSON, con esta forma exacta:
+const SYSTEM_PROMPT = `Eres el motor de Benchmark Exprés. Dada una idea de producto o negocio, entregas un estudio de mercado honesto con estas dimensiones, en JSON, con esta forma exacta:
 {
   "categoria": string,
   "titulo": string,
@@ -12,12 +12,14 @@ const SYSTEM_PROMPT = `Eres el motor de Benchmark Exprés. Dada una idea de prod
   "señalesTendencia": string[],
   "ideasRedes": string[],
   "queHacer": string[],
-  "queNoHacer": string[]
+  "queNoHacer": string[],
+  "fuentes": string[]
 }
 
 Reglas:
-- "jugadores" deben ser empresas o productos reales que existan en ese mercado, nunca inventados. Si no estás seguro de que algo es real, no lo incluyas.
+- "jugadores" son apps o productos reales que ya existen y hacen algo igual o parecido a la idea recibida, nunca inventados. Si no estás seguro de que algo es real, no lo incluyas.
 - "señalesTendencia" es una lectura razonada del sector, nunca datos de redes sociales en tiempo real ni una métrica que no puedas sustentar.
+- "fuentes" son URLs reales (artículos, reportes, páginas de los jugadores mencionados) que respaldan lo que afirmas en brecha, oportunidad o señales de tendencia. Si no tienes una URL real para respaldar algo, no la inventes: deja el arreglo más corto en vez de poner un link falso.
 - Responde solo el JSON, sin texto adicional.`;
 
 export async function POST(request: Request) {
