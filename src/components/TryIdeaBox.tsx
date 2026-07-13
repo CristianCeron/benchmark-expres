@@ -47,6 +47,11 @@ export function TryIdeaBox() {
       <button className="btn btn-primary btn-block" disabled={loading || !idea.trim()} onClick={analizar}>
         {loading ? "Analizando..." : "Analizar mi idea"}
       </button>
+      {loading && (
+        <p style={{ fontSize: 11.5, opacity: 0.6, marginTop: 8 }}>
+          Puede tardar hasta 15-20 segundos, la IA está investigando de verdad.
+        </p>
+      )}
       {error && <p style={{ fontSize: 12.5, color: "var(--color-accent-100)", marginTop: 12 }}>{error}</p>}
       {resultado && (
         <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 12 }}>
