@@ -87,6 +87,15 @@ Las tareas originales 2 a 13 de este plan construyeron 4 benchmarks de ejemplo f
 - commit: "feat: reintentar automáticamente con backoff si Gemini falla por alta demanda"
 - Depende de: Tarea 22
 
+## Tarea 25: Respaldo con modelo liviano ante cupo agotado o saturación de Gemini [HECHO en local, pendiente de deploy]
+- Checkpoint: sí (toca producción; no se sube sin visto bueno de Cristian tras probar en local)
+- Causa raíz: al revisar el proyecto meses después, el análisis en producción devolvía 503. El modelo principal (`gemini-flash-latest`) tiene en el plan gratis un tope de 20 solicitudes por día por proyecto y alternaba entre 429 (cupo agotado, se renueva a medianoche hora del Pacífico) y 503 (saturación de Google). El modelo liviano (`gemini-flash-lite-latest`) respondía bien y tiene un tope bastante más alto.
+- test (falla): la ruta usa primero el modelo principal; si falla, el segundo intento va al modelo liviano y responde 200; una respuesta incompleta se descarta y se prueba otro intento; si faltan campos secundarios se completan vacíos; si fallan los 4 intentos devuelve 503. Fallaban 4 de 6 porque la ruta solo conocía un modelo y devolvía JSON crudo sin validar.
+- implementa: en `app/api/try-idea/route.ts`, 4 intentos en orden principal, liviano, principal, liviano (sin espera entre los dos primeros, 1s y 2s antes de los siguientes), y una función `normalizar` que valida la forma de la respuesta para que la página nunca reciba arrays faltantes.
+- tests pasan: 25 en verde, `tsc --noEmit` sin errores. Prueba real en local con 2 ideas nuevas (paseadores de perros, tutorías): ambas 200 en 6 y 9 segundos, 12 de 12 campos, competidores reales, atendidas por el modelo liviano porque el principal estaba sin cupo.
+- Riesgo que sigue abierto: el cupo diario del plan gratis es compartido por todos los que usen la página y por las pruebas de desarrollo; cada reintento cuenta contra el cupo.
+- Depende de: Tarea 24
+
 ## Verificación end-to-end
 - En local: `npm run dev`, abrir el cuadro "prueba tu idea", analizar la idea de ejemplo o una propia, confirmar que llega una respuesta real de Gemini con las 8 dimensiones en tarjetas expandibles, y que la advertencia se ve siempre.
 - En publicado: abrir la URL de Vercel, repetir la misma prueba, y confirmar que se ve bien en un celular.
